@@ -22,13 +22,14 @@ import { InGroupDto } from '../dto/in-group.dto';
 import { OutGroupDto } from '../dto/out-group.dto';
 import { OutGroupsDto } from '../dto/out-groups.dto';
 import { Group } from '../entites/group.entity';
-import { RolesGuard } from '../guards/roles.guard';
+import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
+import { Permissions } from '../decorators/permissions.decorator';
 
 @ApiUseTags('groups')
 @ApiBearerAuth()
 @Controller('/api/groups')
-@UseGuards(RolesGuard)
+@UseGuards(AccessGuard)
 export class GroupsController {
     constructor(
         @InjectRepository(Group)
@@ -37,6 +38,7 @@ export class GroupsController {
 
     }
     @Roles('isSuperuser')
+    @Permissions('add_group')
     @HttpCode(HttpStatus.CREATED)
     @ApiResponse({
         status: HttpStatus.CREATED, type: OutGroupDto,
@@ -56,6 +58,7 @@ export class GroupsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('change_group')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutGroupDto,
@@ -78,6 +81,7 @@ export class GroupsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('delete_group')
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiResponse({
         status: HttpStatus.NO_CONTENT,
@@ -96,6 +100,7 @@ export class GroupsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_group')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutGroupDto,
@@ -115,6 +120,7 @@ export class GroupsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_group')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutGroupsDto,

@@ -7,12 +7,13 @@ import { InAccountRegisterDto } from '../dto/in-account-register.dto';
 import { InAccountDto } from '../dto/in-account.dto';
 import { InTokenDto } from '../dto/in-token.dto';
 import { OutAccountTokenDto } from '../dto/out-account-token.dto';
-import { RolesGuard } from '../guards/roles.guard';
+import { AccessGuard } from '../guards/access.guard';
 import { AccountService } from '../services/account.service';
+import { Permissions } from '../decorators/permissions.decorator';
 
 @ApiUseTags('account')
 @Controller('/api/account')
-@UseGuards(RolesGuard)
+@UseGuards(AccessGuard)
 export class AccountController {
     constructor(
         private accountService: AccountService
@@ -61,6 +62,7 @@ export class AccountController {
     }
     @ApiBearerAuth()
     @Roles('isActive')
+    @Permissions('change_profile')
     @HttpCode(HttpStatus.OK)
     @Post('/update')
     @ApiResponse({

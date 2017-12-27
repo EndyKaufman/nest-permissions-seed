@@ -17,18 +17,19 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
 
+import { Permissions } from '../decorators/permissions.decorator';
 import { Roles } from '../decorators/roles.decorator';
 import { InPermissionDto } from '../dto/in-permission.dto';
 import { OutPermissionDto } from '../dto/out-permission.dto';
 import { OutPermissionsDto } from '../dto/out-permissions.dto';
 import { Permission } from '../entites/permission.entity';
-import { RolesGuard } from '../guards/roles.guard';
+import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
 
 @ApiUseTags('permissions')
 @ApiBearerAuth()
 @Controller('/api/permissions')
-@UseGuards(RolesGuard)
+@UseGuards(AccessGuard)
 export class PermissionsController {
     constructor(
         @InjectRepository(Permission)
@@ -37,6 +38,7 @@ export class PermissionsController {
 
     }
     @Roles('isSuperuser')
+    @Permissions('add_permission')
     @HttpCode(HttpStatus.CREATED)
     @ApiResponse({
         status: HttpStatus.CREATED, type: OutPermissionDto,
@@ -56,6 +58,7 @@ export class PermissionsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('change_permission')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutPermissionDto,
@@ -78,6 +81,7 @@ export class PermissionsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('delete_permission')
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiResponse({
         status: HttpStatus.NO_CONTENT,
@@ -96,6 +100,7 @@ export class PermissionsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_permission')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutPermissionDto,
@@ -115,6 +120,7 @@ export class PermissionsController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_permission')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutPermissionsDto,
@@ -148,7 +154,7 @@ export class PermissionsController {
         ) {
         try {
             let objects: [Permission[], number];
-            let qb = this.permissionsRepository.createQueryBuilder('user');
+            let qb = this.permissionsRepository.createQueryBuilder('permission');
             if (group) {
                 qb = qb.leftJoin('permission.groups', 'group')
                     .where('group.id = :group', { group: group });

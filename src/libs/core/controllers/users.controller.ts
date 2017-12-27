@@ -22,13 +22,14 @@ import { InUserDto } from '../dto/in-user.dto';
 import { OutUserDto } from '../dto/out-user.dto';
 import { OutUsersDto } from '../dto/out-users.dto';
 import { User } from '../entites/user.entity';
-import { RolesGuard } from '../guards/roles.guard';
+import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
+import { Permissions } from '../decorators/permissions.decorator';
 
 @ApiUseTags('users')
 @ApiBearerAuth()
 @Controller('/api/users')
-@UseGuards(RolesGuard)
+@UseGuards(AccessGuard)
 export class UsersController {
     constructor(
         @InjectRepository(User)
@@ -37,6 +38,7 @@ export class UsersController {
 
     }
     @Roles('isSuperuser')
+    @Permissions('add_user')
     @HttpCode(HttpStatus.CREATED)
     @ApiResponse({
         status: HttpStatus.CREATED, type: OutUserDto,
@@ -57,6 +59,7 @@ export class UsersController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('change_user')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutUserDto,
@@ -80,6 +83,7 @@ export class UsersController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('delete_user')
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiResponse({
         status: HttpStatus.NO_CONTENT,
@@ -98,6 +102,7 @@ export class UsersController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('load_user')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutUserDto,
@@ -120,6 +125,7 @@ export class UsersController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('load_user')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutUsersDto,

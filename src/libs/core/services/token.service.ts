@@ -1,5 +1,4 @@
-import { User } from "../entites/user.entity";
-import { sign, verify, decode } from 'jsonwebtoken';
+import { decode, sign, verify } from 'jsonwebtoken';
 
 export class TokenService {
     sign(user: any) {
@@ -9,12 +8,16 @@ export class TokenService {
                 isStaff: user.isStaff,
                 isActive: user.isActive,
                 isSuperuser: user.isSuperuser,
+                groups: user.groups.map(group => {
+                    return { name: group.name };
+                })
             },
             this.getSecretKey({
                 id: user.id,
                 isStaff: user.isStaff,
                 isActive: user.isActive,
                 isSuperuser: user.isSuperuser,
+                groups: user.groups
             }),
             {
                 expiresIn: process.env.JWT_EXPIRATION_DELTA
@@ -37,6 +40,7 @@ export class TokenService {
             '$' + data.id +
             '$' + data.isStaff +
             '$' + data.isActive +
-            '$' + data.isSuperuser;
+            '$' + data.isSuperuser +
+            (data.groups ? data.groups.map(group => '$' + group.name) : '');
     }
 }

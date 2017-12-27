@@ -22,13 +22,14 @@ import { InContentTypeDto } from '../dto/in-content-type.dto';
 import { OutContentTypeDto } from '../dto/out-content-type.dto';
 import { OutContentTypesDto } from '../dto/out-content-types.dto';
 import { ContentType } from '../entites/content-type.entity';
-import { RolesGuard } from '../guards/roles.guard';
+import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
+import { Permissions } from '../decorators/permissions.decorator';
 
 @ApiUseTags('content-types')
 @ApiBearerAuth()
 @Controller('/api/content-types')
-@UseGuards(RolesGuard)
+@UseGuards(AccessGuard)
 export class ContentTypesController {
     constructor(
         @InjectRepository(ContentType)
@@ -37,6 +38,7 @@ export class ContentTypesController {
 
     }
     @Roles('isSuperuser')
+    @Permissions('add_content-type')
     @HttpCode(HttpStatus.CREATED)
     @ApiResponse({
         status: HttpStatus.CREATED, type: OutContentTypeDto,
@@ -56,6 +58,7 @@ export class ContentTypesController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('change_content-type')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutContentTypeDto,
@@ -78,6 +81,7 @@ export class ContentTypesController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('delete_content-type')
     @HttpCode(HttpStatus.NO_CONTENT)
     @ApiResponse({
         status: HttpStatus.NO_CONTENT,
@@ -96,6 +100,7 @@ export class ContentTypesController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_content-type')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutContentTypeDto,
@@ -115,6 +120,7 @@ export class ContentTypesController {
         }
     }
     @Roles('isSuperuser')
+    @Permissions('read_content-type')
     @HttpCode(HttpStatus.OK)
     @ApiResponse({
         status: HttpStatus.OK, type: OutContentTypesDto,

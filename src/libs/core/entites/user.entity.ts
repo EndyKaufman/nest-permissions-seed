@@ -117,4 +117,13 @@ export class User {
             this.password = undefined;
         }
     }
+
+    checkPermissions(permissions: string[]) {
+        permissions = permissions.map(permission => permission.toLowerCase());
+        return this.groups.filter(group =>
+            group.permissions.filter(permission =>
+                permissions.indexOf(permission.name.toLowerCase()) !== -1
+            ).length > 0
+        ).length > 0
+    }
 }

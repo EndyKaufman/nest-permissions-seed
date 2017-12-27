@@ -28,14 +28,11 @@ export class CustomExceptionFilter implements ExceptionFilter {
             });
             return;
         }
-        let otherException: any = exception;
         if (process.env.DEBUG === 'true' || process.env.DEBUG === '1') {
-            response.status(HttpStatus.BAD_REQUEST).json(otherException);
+            console.error(exception);
+            response.status(HttpStatus.BAD_REQUEST).json({ message: String(exception) });
             return;
         }
-        if (process.env.DEBUG !== 'true' || process.env.DEBUG !== '1') {
-            response.status(HttpStatus.BAD_REQUEST).json({ message: otherException.message });
-            return;
-        }
+        response.status(HttpStatus.BAD_REQUEST).json(exception);
     }
 }
