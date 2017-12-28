@@ -9,20 +9,16 @@ const connectionString = new ConnectionString(process.env.DATABASE_URL);
 if (connectionString.protocol === 'sqlite') {
     module.exports = {
         type: 'sqlite',
-        database: connectionString.host,
+        database: './' + connectionString.host + (connectionString.segments.length ? '/' + connectionString.segments[0] : ''),
         entities: [
-            __dirname + '/src/libs/**/*.entity.ts',
+            'src/**/entities/**/*.entity.ts',
         ],
         migrations: [
-            'src/migrations/**/*.ts'
+            'src/**/migrations/**/*.ts'
         ],
         subscribers: [
-            'src/subscribers/**/*.ts'
+            'src/**/subscribers/**/*.ts'
         ],
-        cli: {
-            'migrationsDir': 'src/migrations',
-            'subscribersDir': 'src/subscribers'
-        },
         logging: 'all',
         synchronize: false,
     }
@@ -35,19 +31,15 @@ if (connectionString.protocol === 'sqlite') {
         password: connectionString.password,
         database: connectionString.segments[0],
         entities: [
-            __dirname + '/src/libs/**/*.entity.ts',
+            'src/**/entities/**/*.entity.ts',
         ],
         migrations: [
-            'src/migrations/**/*.ts'
+            'src/**/migrations/**/*.ts'
         ],
         subscribers: [
-            'src/subscribers/**/*.ts'
+            'src/**/subscribers/**/*.ts'
         ],
-        cli: {
-            'migrationsDir': 'src/migrations',
-            'subscribersDir': 'src/subscribers'
-        },
         logging: 'all',
-        synchronize: true,
+        synchronize: false,
     }
 }

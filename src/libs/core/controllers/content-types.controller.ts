@@ -21,7 +21,7 @@ import { Roles } from '../decorators/roles.decorator';
 import { InContentTypeDto } from '../dto/in-content-type.dto';
 import { OutContentTypeDto } from '../dto/out-content-type.dto';
 import { OutContentTypesDto } from '../dto/out-content-types.dto';
-import { ContentType } from '../entites/content-type.entity';
+import { ContentType } from '../entities/content-type.entity';
 import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
 import { Permissions } from '../decorators/permissions.decorator';

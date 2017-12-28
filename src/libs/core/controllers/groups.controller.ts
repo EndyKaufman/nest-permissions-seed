@@ -21,7 +21,7 @@ import { Roles } from '../decorators/roles.decorator';
 import { InGroupDto } from '../dto/in-group.dto';
 import { OutGroupDto } from '../dto/out-group.dto';
 import { OutGroupsDto } from '../dto/out-groups.dto';
-import { Group } from '../entites/group.entity';
+import { Group } from '../entities/group.entity';
 import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
 import { Permissions } from '../decorators/permissions.decorator';

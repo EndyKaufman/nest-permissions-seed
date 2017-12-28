@@ -21,7 +21,7 @@ import { Roles } from '../decorators/roles.decorator';
 import { InUserDto } from '../dto/in-user.dto';
 import { OutUserDto } from '../dto/out-user.dto';
 import { OutUsersDto } from '../dto/out-users.dto';
-import { User } from '../entites/user.entity';
+import { User } from '../entities/user.entity';
 import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
 import { Permissions } from '../decorators/permissions.decorator';

@@ -71,6 +71,7 @@ export class User {
         cascade: ['remove']
     })
     @JoinTable({
+        //not work on run cli migration: 
         name: 'user_groups',
         joinColumn: {
             name: 'user_id',

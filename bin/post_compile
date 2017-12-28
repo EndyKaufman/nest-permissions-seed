@@ -1,0 +1,4 @@
+# !/usr/bin/env bash
+npm i
+npm run schema:sync
+npm run migrate:run

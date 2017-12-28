@@ -1,45 +1,53 @@
 import { IsNotEmpty, MaxLength, validateSync } from 'class-validator';
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import {
+    BeforeInsert,
+    BeforeUpdate,
+    Column,
+    Entity,
+    JoinColumn,
+    JoinTable,
+    ManyToMany,
+    ManyToOne,
+    PrimaryGeneratedColumn,
+} from 'typeorm';
 
-import { Permission } from './permission.entity';
-import { User } from './user.entity';
+import { ContentType } from './content-type.entity';
+import { Group } from './group.entity';
 import { CustomValidationError } from '../exceptions/custom-validation.error';
 
 @Entity()
-export class Group {
+export class Permission {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column({ length: 100, unique: true })
+    @Column({ length: 100 })
     @IsNotEmpty()
     @MaxLength(100)
     name: string;
 
-    @Column({ length: 255, unique: true })
+    @Column({ length: 255 })
     @IsNotEmpty()
     @MaxLength(255)
     title: string;
 
-    @ManyToMany(type => Permission, {
-        cascade: ['remove']
-    })
+    @ManyToOne(type => ContentType, { eager: true, nullable: true })
+    @JoinColumn({ name: "content_type_id" })
+    contentType: ContentType;
+
+    @ManyToMany(type => Group)
     @JoinTable({
+        //not work on run cli migration: 
         name: 'group_permissions',
         joinColumn: {
-            name: 'group_id',
+            name: 'permission_id',
             referencedColumnName: 'id'
         },
         inverseJoinColumn: {
-            name: 'permission_id',
+            name: 'group_id',
             referencedColumnName: 'id'
         }
     })
-    permissions: Permission[];
-
-
-    @ManyToMany(type => User, user => user.groups)
-    @JoinTable()
-    users: User[];
+    groups: Group[];
 
     @BeforeInsert()
     doBeforeInsertion() {

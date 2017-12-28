@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { plainToClass } from 'class-transformer';
 import { Repository } from 'typeorm';
 
-import { Group } from '../entites/group.entity';
+import { Group } from '../entities/group.entity';
 
 @Component()
 export class GroupsService {

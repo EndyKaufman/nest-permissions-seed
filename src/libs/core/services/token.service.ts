@@ -37,10 +37,12 @@ export class TokenService {
     }
     getSecretKey(data: any) {
         return process.env.SECRET_KEY +
-            '$' + data.id +
-            '$' + data.isStaff +
-            '$' + data.isActive +
-            '$' + data.isSuperuser +
-            (data.groups ? data.groups.map(group => '$' + group.name) : '');
+            (data ? (
+                '$' + data.id +
+                '$' + data.isStaff +
+                '$' + data.isActive +
+                '$' + data.isSuperuser +
+                (data.groups ? data.groups.map(group => '$' + group.name) : '')
+            ) : '');
     }
 }

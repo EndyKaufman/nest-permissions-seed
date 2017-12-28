@@ -7,7 +7,7 @@ import { InAccountLoginDto } from '../dto/in-account-login.dto';
 import { InAccountRegisterDto } from '../dto/in-account-register.dto';
 import { InTokenDto } from '../dto/in-token.dto';
 import { OutAccountTokenDto } from '../dto/out-account-token.dto';
-import { User } from '../entites/user.entity';
+import { User } from '../entities/user.entity';
 import { TokenService } from './token.service';
 import { InAccountDto } from '../dto/in-account.dto';
 

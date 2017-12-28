@@ -2,15 +2,28 @@
   "name": "nest-permissions-seed",
   "version": "0.0.1",
   "description": "JWT+PasswordHash+User+Group+Permission+ContentType",
+  "repository": "https://github.com/EndyKaufman/kaufman-bot.git",
+  "engines": {
+    "node": ">=6",
+    "npm": ">=5.3.0"
+  },
+  "author": {
+    "name": "EndyKaufman",
+    "email": "admin@site15.ru"
+  },
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon",
-    "prestart:prod": "tsc",
+    "build": "tsc",
     "start:prod": "node dist/server.js",
+    "test": "tsc",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migrations:create",
     "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migrations:generate",
-    "migrate:run": "ts-node ./node_modules/typeorm/cli.js migrations:run"
+    "migrate:run": "ts-node ./node_modules/typeorm/cli.js migrations:run",
+    "entity:create": "ts-node ./node_modules/typeorm/cli.js entity:create",
+    "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
+    "schema:log": "ts-node ./node_modules/typeorm/cli.js schema:log"
   },
   "dependencies": {
     "@nestjs/common": "^4.5.2",

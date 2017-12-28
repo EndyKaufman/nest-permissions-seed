@@ -22,7 +22,7 @@ import { Roles } from '../decorators/roles.decorator';
 import { InPermissionDto } from '../dto/in-permission.dto';
 import { OutPermissionDto } from '../dto/out-permission.dto';
 import { OutPermissionsDto } from '../dto/out-permissions.dto';
-import { Permission } from '../entites/permission.entity';
+import { Permission } from '../entities/permission.entity';
 import { AccessGuard } from '../guards/access.guard';
 import { ParseIntWithDefaultPipe } from '../pipes/parse-int-with-default.pipe';
 

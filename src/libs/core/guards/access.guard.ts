@@ -3,7 +3,7 @@ import { Reflector } from '@nestjs/core';
 import { plainToClass } from 'class-transformer';
 import { IncomingMessage } from 'http';
 
-import { User } from '../entites/user.entity';
+import { User } from '../entities/user.entity';
 import { GroupsService } from '../services/groups.service';
 import { TokenService } from '../services/token.service';
 
