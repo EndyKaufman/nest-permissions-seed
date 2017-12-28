@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "clean": "./node_modules/.bin/del-cli dist",
+    "clean": "./node_modules/.bin/del-cli dist www",
     "start": "npm run build && npm run start:prod",
     "start:prod": "node index.js",
     "start:watch": "nodemon",
@@ -24,7 +24,8 @@
     "migrate:run": "ts-node ./node_modules/typeorm/cli.js migrations:run",
     "entity:create": "ts-node ./node_modules/typeorm/cli.js entity:create",
     "schema:sync": "ts-node ./node_modules/typeorm/cli.js schema:sync",
-    "schema:log": "ts-node ./node_modules/typeorm/cli.js schema:log"
+    "schema:log": "ts-node ./node_modules/typeorm/cli.js schema:log",
+    "docs": "./node_modules/.bin/typedoc --ignoreCompilerErrors --excludeExternals --out www src"
   },
   "dependencies": {
     "@nestjs/common": "^4.5.2",
@@ -55,6 +56,7 @@
     "typescript": "^2.6.2"
   },
   "devDependencies": {
-    "nodemon": "^1.14.3"
+    "nodemon": "^1.14.3",
+    "typedoc": "^0.9.0"
   }
 }

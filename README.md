@@ -4,7 +4,7 @@
 [![dependencies-release][dependencies-image]][dependencies-url]
 
 
-A simple todo application demonstrating the basic usage of permissions with [NestJS](https://nestjs.com).
+A simple application demonstrating the basic usage of permissions with [NestJS](https://nestjs.com).
 
 ## Usage
 - clone or fork repository `git clone --recursive https://github.com/EndyKaufman/nest-permissions-seed.git`
@@ -14,7 +14,7 @@ A simple todo application demonstrating the basic usage of permissions with [Nes
 - copy `_env` to `.env` and set environments for use
 - run `npm run schema:sync` to create all tables in database 
 - run `npm run migrate:run` to run all migrations
-- run `npm run start` to fire up prod server (`npm run start:watch` - dev server)
+- run `npm run start:prod` to fire up prod server (`npm run start:watch` - dev server)
 - Open browser to [`http://localhost:3000`](http://localhost:3000)
 
 ## Demo application on [Heroku](https://nest-permissions-seed.herokuapp.com)

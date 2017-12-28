@@ -5,12 +5,20 @@ import { config } from 'dotenv';
 import { AppModule } from './apps/demo/app.module';
 import { CustomExceptionFilter } from './libs/core/exceptions/custom-exception.filter';
 import { ValidationPipe } from './libs/core/pipes/validation.pipe';
+import * as path from 'path';
+import * as express from 'express';
 
 
 async function bootstrap() {
-	const packageBody = require('../package.json');
 	config();
-	const app = await NestFactory.create(AppModule);
+	const packageBody = require('../package.json');
+
+	const WWW_ROOT = path.resolve(__dirname, '..', 'www');
+	const server = express();
+
+	const app = await NestFactory.create(AppModule, server);
+
+	server.use(express.static(WWW_ROOT));
 	app.useGlobalFilters(new CustomExceptionFilter());
 	app.useGlobalPipes(new ValidationPipe());
 
