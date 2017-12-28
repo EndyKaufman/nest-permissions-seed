@@ -26,6 +26,7 @@ async function bootstrap() {
 		.setTitle(packageBody.name)
 		.setDescription(packageBody.description)
 		.setContactEmail(packageBody.author.email)
+		.setExternalDoc('Project on Github', packageBody.repository)
 		.setLicense('MIT', '')
 		.setSchemes('https', 'http')
 		.setVersion(packageBody.version)
