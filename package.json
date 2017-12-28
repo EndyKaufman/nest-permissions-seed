@@ -13,11 +13,12 @@
   },
   "license": "MIT",
   "scripts": {
+    "clean": "del-cli dist",
     "start": "node index.js",
     "start:watch": "nodemon",
-    "build": "tsc",
+    "build": "npm run clean && npm run schema:sync && npm run migrate:run && tsc --pretty",
     "start:prod": "node dist/server.js",
-    "test": "tsc",
+    "test": "npm run build",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migrations:create",
     "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migrations:generate",
     "migrate:run": "ts-node ./node_modules/typeorm/cli.js migrations:run",
@@ -52,6 +53,7 @@
   },
   "devDependencies": {
     "@types/node": "^8.5.2",
+    "del-cli": "^1.1.0",
     "nodemon": "^1.14.3",
     "ts-node": "^4.1.0"
   }

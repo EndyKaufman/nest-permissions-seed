@@ -28,3 +28,5 @@ npm-debug.log
 
 # dist
 /dist
+/database/sqlitedb.db
+/database/sqlitedb.db
