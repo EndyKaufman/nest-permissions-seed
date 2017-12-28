@@ -7,7 +7,7 @@
 A simple application demonstrating the basic usage of permissions with [NestJS](https://nestjs.com).
 
 ## Usage
-- clone or fork repository `git clone --recursive https://github.com/EndyKaufman/nest-permissions-seed.git`
+- clone or fork [repository](https://github.com/EndyKaufman/nest-permissions-seed.git) `git clone --recursive https://github.com/EndyKaufman/nest-permissions-seed.git`
 - make sure you have [node.js](https://nodejs.org/) installed version 6+
 - make sure you have NPM installed version 3+
 - run `npm install` to install project dependencies

@@ -25,6 +25,9 @@ async function bootstrap() {
 	const options = new DocumentBuilder()
 		.setTitle(packageBody.name)
 		.setDescription(packageBody.description)
+		.setContactEmail(packageBody.author.email)
+		.setLicense('MIT', '')
+		.setSchemes('https', 'http')
 		.setVersion(packageBody.version)
 		.addBearerAuth('Authorization', 'header')
 		.build();
