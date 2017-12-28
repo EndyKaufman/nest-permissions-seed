@@ -15,10 +15,9 @@
   "scripts": {
     "clean": "./node_modules/.bin/del-cli dist",
     "start": "npm run build && npm run start:prod",
-    "start:dev": "node index.js",
+    "start:prod": "node index.js",
     "start:watch": "nodemon",
     "build": "npm run clean && npm run schema:sync && npm run migrate:run && tsc --pretty",
-    "start:prod": "node dist/server.js",
     "test": "npm run build",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migrations:create",
     "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migrations:generate",
