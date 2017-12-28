@@ -13,11 +13,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "clean": "./node_modules/.bin/del-cli dist www",
+    "clean": "./node_modules/.bin/del-cli dist www database/sqlitedb.db",
     "start": "npm run build && npm run start:prod",
     "start:prod": "node index.js",
     "start:watch": "nodemon",
-    "build": "npm run clean && npm run schema:sync && npm run migrate:run && tsc --pretty",
+    "build": "npm run clean && npm run docs && npm run schema:sync && npm run migrate:run && tsc --pretty",
     "test": "npm run build",
     "migrate:create": "ts-node ./node_modules/typeorm/cli.js migrations:create",
     "migrate:generate": "ts-node ./node_modules/typeorm/cli.js migrations:generate",
@@ -38,6 +38,7 @@
     "@types/dotenv": "^4.0.2",
     "@types/jsonwebtoken": "^7.2.5",
     "@types/node": "^8.5.2",
+    "typedoc": "^0.9.0",
     "ts-node": "^4.1.0",
     "del-cli": "^1.1.0",
     "class-transformer": "^0.1.8",
@@ -56,7 +57,6 @@
     "typescript": "^2.6.2"
   },
   "devDependencies": {
-    "nodemon": "^1.14.3",
-    "typedoc": "^0.9.0"
+    "nodemon": "^1.14.3"
   }
 }
