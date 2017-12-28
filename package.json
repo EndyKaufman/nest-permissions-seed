@@ -37,6 +37,8 @@
     "@nestjs/websockets": "^4.5.2",
     "@types/dotenv": "^4.0.2",
     "@types/jsonwebtoken": "^7.2.5",
+    "@types/node": "^8.5.2",
+    "ts-node": "^4.1.0",
     "del-cli": "^1.1.0",
     "class-transformer": "^0.1.8",
     "class-validator": "^0.7.3",
@@ -54,8 +56,6 @@
     "typescript": "^2.6.2"
   },
   "devDependencies": {
-    "@types/node": "^8.5.2",
-    "nodemon": "^1.14.3",
-    "ts-node": "^4.1.0"
+    "nodemon": "^1.14.3"
   }
 }

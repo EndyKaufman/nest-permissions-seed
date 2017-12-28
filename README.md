@@ -4,7 +4,7 @@
 [![dependencies-release][dependencies-image]][dependencies-url]
 
 
-A simple todo application demonstrating the basic usage of permissions with [NestjJS](https://nestjs.com).
+A simple todo application demonstrating the basic usage of permissions with [NestJS](https://nestjs.com).
 
 ## Usage
 - clone or fork repository `git clone --recursive https://github.com/EndyKaufman/nest-permissions-seed.git`
