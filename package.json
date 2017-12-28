@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "clean": "del-cli dist",
+    "clean": "./node_modules/.bin/del-cli dist",
     "start": "npm run build && npm run start:prod",
     "start:dev": "node index.js",
     "start:watch": "nodemon",
