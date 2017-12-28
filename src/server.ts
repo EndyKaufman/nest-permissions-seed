@@ -1,8 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { config } from 'dotenv';
-import * as path from 'path';
-import * as fs from 'fs';
 
 import { AppModule } from './apps/demo/app.module';
 import { CustomExceptionFilter } from './libs/core/exceptions/custom-exception.filter';
@@ -37,6 +35,6 @@ async function bootstrap() {
 	*/
 	SwaggerModule.setup('/swagger', app, document);
 
-	await app.listen(process.env.PORT && isNaN(+process.env.PORT) ? 5000 : 3000);
+	await app.listen(process.env.PORT && !isNaN(+process.env.PORT) ? +process.env.PORT : 3000);
 }
 bootstrap();
