@@ -15,19 +15,18 @@ export class AccessGuard implements CanActivate {
         private readonly groupsService: GroupsService
     ) {
         //workaround
-        //this.groupsService.loadAll();
+        this.groupsService.loadAll();
     }
 
     canActivate(req: IncomingMessage, context: ExecutionContext): boolean {
         const { parent, handler } = context;
-        if (
-            req.headers['authorization'] &&
-            String(req.headers['authorization']).indexOf(process.env.JWT_AUTH_HEADER_PREFIX) === 0
-        ) {
+        const authorizationHeader = req.headers['authorization'] ?
+            String(req.headers['authorization']) : null;
+        if (authorizationHeader && authorizationHeader.indexOf(process.env.JWT_AUTH_HEADER_PREFIX) === 0) {
             let token =
                 process.env.JWT_AUTH_HEADER_PREFIX ?
-                    String(req.headers['authorization']).split(process.env.JWT_AUTH_HEADER_PREFIX)[1] :
-                    String(req.headers['authorization']);
+                    authorizationHeader.split(process.env.JWT_AUTH_HEADER_PREFIX)[1] :
+                    authorizationHeader;
             token = token.trim();
             if (token && this.tokenService.verify(token)) {
                 const data: any = this.tokenService.decode(token);
@@ -49,7 +48,6 @@ export class AccessGuard implements CanActivate {
             req['user'] &&
             req['user'] instanceof User &&
             req['user'].checkPermissions(permissions) : null;
-
         return hasRole === true || hasPermission === true || (hasRole === null && hasPermission === null);
     }
 }
