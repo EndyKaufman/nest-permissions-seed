@@ -20,9 +20,9 @@ A simple application demonstrating the basic usage of permissions with [NestJS](
 ## Demo application on [Heroku](https://nest-permissions-seed.herokuapp.com)
 
 ### Users
-- username: admin, password: 12345678
-- username: user1, password: 12345678
-- username: user2, password: 12345678
+- user with admin group: admin@admin.com, password: 12345678
+- user with user group: user1@user1.com, password: 12345678
+- user with user group: user2@user2.com, password: 12345678
 
 ### Swagger
 - local: http://localhost:3000/swagger

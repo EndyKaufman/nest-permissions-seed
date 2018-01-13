@@ -1,5 +1,7 @@
 import { decode, sign, verify } from 'jsonwebtoken';
+import { Component } from '@nestjs/common';
 
+@Component()
 export class TokenService {
     sign(user: any) {
         return sign(

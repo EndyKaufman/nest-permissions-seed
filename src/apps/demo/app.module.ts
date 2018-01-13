@@ -6,7 +6,7 @@ import { entities } from '../../libs/core/entities/index';
 
 @Module({
   modules: [
-    TypeOrmModule.forRoot([...entities]),
+    TypeOrmModule.forRoot(),
     CoreModule
   ],
   controllers: []
