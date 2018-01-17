@@ -6,6 +6,8 @@
 
 A simple application demonstrating the basic usage of permissions with [NestJS](https://nestjs.com).
 
+**Current repository no longer supported, all changes are in the new repository https://github.com/rucken/core-nestjs**
+
 ## Usage
 - clone or fork [repository](https://github.com/EndyKaufman/nest-permissions-seed.git) `git clone --recursive https://github.com/EndyKaufman/nest-permissions-seed.git`
 - make sure you have [node.js](https://nodejs.org/) installed version 6+
