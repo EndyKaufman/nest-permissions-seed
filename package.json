@@ -54,7 +54,7 @@
     "ts-node": "^4.1.0",
     "del-cli": "^1.1.0",
     "class-transformer": "^0.1.8",
-    "class-validator": "^0.7.3",
+    "class-validator": "^0.8.0",
     "connection-string": "^0.4.1",
     "dotenv": "^4.0.0",
     "jsonwebtoken": "^8.1.0",
