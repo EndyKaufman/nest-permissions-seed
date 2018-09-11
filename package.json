@@ -58,7 +58,7 @@
     "connection-string": "^0.4.1",
     "dotenv": "^5.0.0",
     "jsonwebtoken": "^8.1.0",
-    "node-django-hashers": "^1.0.9",
+    "node-django-hashers": "^1.1.6",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.10",
     "rxjs": "^5.5.6",
