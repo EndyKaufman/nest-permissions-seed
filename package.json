@@ -57,7 +57,7 @@
     "class-validator": "^0.8.0",
     "connection-string": "^0.4.1",
     "dotenv": "^5.0.0",
-    "jsonwebtoken": "^8.1.0",
+    "jsonwebtoken": "^8.4.0",
     "node-django-hashers": "^1.0.9",
     "redis": "^2.8.0",
     "reflect-metadata": "^0.1.10",
