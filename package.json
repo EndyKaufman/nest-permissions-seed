@@ -44,7 +44,7 @@
     "@nestjs/core": "^4.5.9",
     "@nestjs/microservices": "^4.5.8",
     "@nestjs/swagger": "^1.1.3",
-    "@nestjs/testing": "^4.5.5",
+    "@nestjs/testing": "^6.0.0",
     "@nestjs/typeorm": "^2.0.0",
     "@nestjs/websockets": "^4.5.8",
     "@types/dotenv": "^4.0.2",
