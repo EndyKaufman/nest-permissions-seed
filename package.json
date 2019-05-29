@@ -52,7 +52,7 @@
     "@types/node": "^9.3.0",
     "typedoc": "^0.10.0",
     "ts-node": "^4.1.0",
-    "del-cli": "^1.1.0",
+    "del-cli": "^2.0.0",
     "class-transformer": "^0.1.8",
     "class-validator": "^0.8.0",
     "connection-string": "^0.4.1",
