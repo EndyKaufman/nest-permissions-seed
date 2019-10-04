@@ -40,7 +40,7 @@
     "docs": "./node_modules/.bin/typedoc --ignoreCompilerErrors --excludeExternals --out www src"
   },
   "dependencies": {
-    "@nestjs/common": "^4.5.9",
+    "@nestjs/common": "^6.8.1",
     "@nestjs/core": "^4.5.9",
     "@nestjs/microservices": "^4.5.8",
     "@nestjs/swagger": "^1.1.3",
