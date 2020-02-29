@@ -65,7 +65,7 @@
     "sqlite3": "^3.1.13",
     "swagger-test-templates": "^1.4.3",
     "tweetnacl-util": "^0.15.0",
-    "typeorm": "^0.2.0-alpha.13",
+    "typeorm": "^0.2.23",
     "typescript": "^2.6.2"
   },
   "devDependencies": {
