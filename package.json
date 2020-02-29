@@ -48,7 +48,7 @@
     "@nestjs/typeorm": "^2.0.0",
     "@nestjs/websockets": "^4.5.8",
     "@types/dotenv": "^4.0.2",
-    "@types/jsonwebtoken": "^7.2.5",
+    "@types/jsonwebtoken": "^8.3.8",
     "@types/node": "^9.3.0",
     "typedoc": "^0.10.0",
     "ts-node": "^4.1.0",
